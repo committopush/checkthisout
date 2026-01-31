@@ -845,7 +845,7 @@ body {
     }
 }
 
-/* Hide floating GIFs on mobile for cleaner experience */
+/* Adjust floating GIFs on mobile */
 @media (max-width: 768px) {
     .floating-gif {
         width: 60px;
@@ -858,7 +858,11 @@ body {
 
 @media (max-width: 480px) {
     .floating-gif {
-        display: none;
+        width: 50px;
+    }
+
+    .gif-1, .gif-2, .gif-3, .gif-4, .gif-5, .gif-6 {
+        width: 50px;
     }
 }
 
