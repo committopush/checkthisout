@@ -899,43 +899,43 @@ body:has(#screen-9.active) {
     }
 
     .floating-gif {
-        width: 50px;
+        width: 60px;
     }
 
     .gif-1 {
         top: 10px;
         left: 5px;
-        width: 50px;
+        width: 60px;
     }
 
     .gif-2 {
         top: 10px;
         right: 5px;
-        width: 50px;
+        width: 60px;
     }
 
     .gif-3 {
         top: 45%;
         left: 5px;
-        width: 50px;
+        width: 60px;
     }
 
     .gif-4 {
         top: 45%;
         right: 5px;
-        width: 50px;
+        width: 60px;
     }
 
     .gif-5 {
         bottom: 80px;
         left: 5px;
-        width: 50px;
+        width: 60px;
     }
 
     .gif-6 {
         bottom: 80px;
         right: 5px;
-        width: 50px;
+        width: 60px;
     }
 }
 
