@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofiia Valentine's Test 💖</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Screen 0: Landing Page -->
+    <div class="screen active" id="screen-0">
+        <div class="content">
+            <h1 class="title">💌 Just a Small Quiz for You</h1>
+            <p class="subtitle">✨ Made especially for Sofiia ✨</p>
+            <button class="btn btn-primary" onclick="goToScreen(1)">👉 Start the Test</button>
+        </div>
+    </div>
+
+    <!-- Screen 1: Biased Question -->
+    <div class="screen" id="screen-1">
+        <div class="content">
+            <h2 class="question">Who is the most perfect person in the world? 🌍</h2>
+            <div class="options">
+                <button class="option-btn" onclick="showPopup('✔️ Correct answer.', 2)">Sofiia 💖</button>
+                <button class="option-btn" onclick="showPopup('✔️ Correct answer.', 2)">Sofiia again 😌</button>
+                <button class="option-btn" onclick="showPopup('✔️ Correct answer.', 2)">Obviously Sofiia 🙄</button>
+                <button class="option-btn" id="who-is-sofiia-btn" onclick="handleWhoIsSofiia()">Who is Sofiia? 💀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 2: Multi-Select Question -->
+    <div class="screen" id="screen-2">
+        <div class="content">
+            <h2 class="question">What makes Sofiia so amazing? ✨</h2>
+            <div class="options">
+                <button class="option-btn multi-select-btn" id="amazing-option-0" onclick="toggleAmazingOption(0)">Her amazing smile 😍</button>
+                <button class="option-btn multi-select-btn" id="amazing-option-1" onclick="toggleAmazingOption(1)">Her cute laugh 😌</button>
+                <button class="option-btn multi-select-btn" id="amazing-option-2" onclick="toggleAmazingOption(2)">How kind and sweet she is 💖</button>
+                <button class="option-btn multi-select-btn" id="amazing-option-3" onclick="toggleAmazingOption(3)">Her femininity and elegance 🌸</button>
+            </div>
+            <button class="btn btn-primary" onclick="checkAmazingAnswers()" style="margin-top: 30px;">👉 Continue</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: Question Changes Mid-Click -->
+    <div class="screen" id="screen-3">
+        <div class="content">
+            <h2 class="question">What is the best date idea for Sofiia? 🌅</h2>
+            <div class="options">
+                <button class="option-btn" onclick="showPopup('Obviously. Sofiia deserves the best.', 4)">Romantic dinner 🍝</button>
+                <button class="option-btn" onclick="showPopup('Obviously. Sofiia deserves the best.', 4)">Movie night 🎬</button>
+                <button class="option-btn" onclick="showPopup('Obviously. Sofiia deserves the best.', 4)">Trip together ✈️</button>
+                <button class="option-btn special-option" onmouseenter="changeLastOption()" onclick="showPopup('Obviously. Sofiia deserves the best.', 4)">Staying home 🛋️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Bad Option Gets Worse -->
+    <div class="screen" id="screen-4">
+        <div class="content">
+            <h2 class="question">How amazing is Sofiia? ✨</h2>
+            <div class="options">
+                <button class="option-btn" onclick="showPopup('✔️ Obviously true!', 5)">Very amazing 💖</button>
+                <button class="option-btn" onclick="showPopup('✔️ Obviously true!', 5)">Extremely amazing 😍</button>
+                <button class="option-btn" onclick="showPopup('✔️ Obviously true!', 5)">Legendary 🐉</button>
+                <button class="option-btn bad-option" id="bad-option" onclick="handleBadOption()">Not that amazing 🤡</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: CAPTCHA -->
+    <div class="screen" id="screen-5">
+        <div class="content">
+            <h2 class="question">🛑 Security Check</h2>
+            <p class="captcha-text">Before showing the results, we must confirm that Sofiia is real<br>(and not a goddess).</p>
+
+            <div class="captcha-task">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="imperfect-check" onclick="shakeCheckbox()">
+                    <span id="checkbox-label">I am not perfect</span>
+                </label>
+            </div>
+
+            <button class="btn btn-primary" onclick="showHumanProof()">👉 Prove you are human</button>
+        </div>
+    </div>
+
+    <!-- Screen 6: Fake Calculation -->
+    <div class="screen" id="screen-6">
+        <div class="content" id="calculation-content">
+            <h2 class="question">⚙️ Calculating Results...</h2>
+            <div class="calculation-messages">
+                <p id="calc-msg" class="calc-message">Counting compliments... 💕</p>
+            </div>
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <span class="progress-text" id="progress-text">0%</span>
+            </div>
+            <p class="final-message" id="final-message">Preparing final results...</p>
+            <button class="btn btn-primary" id="continue-btn" onclick="goToScreen(6.5)" style="display: none;">See final results 👀</button>
+        </div>
+    </div>
+
+    <!-- Screen 6.5: Image CAPTCHA -->
+    <div class="screen" id="screen-6-5">
+        <div class="content">
+            <h2 class="question">🛑 Final Verification Step</h2>
+            <p class="captcha-text">Select the most handsome, cute and amazing man 😌</p>
+
+            <div class="image-grid" id="image-grid">
+                <div class="image-box" onclick="toggleImage(0)">
+                    <img src="images/photo1.jpg" alt="You smiling" id="img-0">
+                    <div class="heart-icon" id="heart-0">❤️</div>
+                </div>
+                <div class="image-box" onclick="toggleImage(1)">
+                    <img src="images/photo2.jpg" alt="You serious" id="img-1">
+                    <div class="heart-icon" id="heart-1">❤️</div>
+                </div>
+                <div class="image-box" onclick="toggleImage(2)">
+                    <img src="images/photo3.jpg" alt="You silly" id="img-2">
+                    <div class="heart-icon" id="heart-2">❤️</div>
+                </div>
+                <div class="image-box" onclick="toggleImage(3)">
+                    <img src="images/photo4.jpg" alt="You handsome" id="img-3">
+                    <div class="heart-icon" id="heart-3">❤️</div>
+                </div>
+                <div class="image-box" onclick="toggleImage(4)">
+                    <img src="images/photo5.jpg" alt="You meme" id="img-4">
+                    <div class="heart-icon" id="heart-4">❤️</div>
+                </div>
+                <div class="image-box" onclick="toggleImage(5)">
+                    <img src="images/photo6.jpg" alt="You blurry" id="img-5">
+                    <div class="heart-icon" id="heart-5">❤️</div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="confirmImageSelection()">👉 Confirm Selection</button>
+        </div>
+    </div>
+
+    <!-- Screen 7: Results Reveal -->
+    <div class="screen" id="screen-7">
+        <div class="content">
+            <h1 class="big-title">🎉 Results Complete 🎉</h1>
+            <h2 class="score-label">💖 Sofiia's Perfection Score</h2>
+            <div class="score-number">1,000,000,000%</div>
+            <p class="result-text">Scientifically proven:<br>Sofiia is the most perfect person in existence 💘</p>
+            <p class="reveal-text" id="reveal-text-1" style="display: none; margin-top: 30px; font-size: 1.3rem; color: #e91e63;">But there is one more thing!</p>
+            <p class="reveal-text" id="reveal-text-2" style="display: none; margin-top: 20px; font-size: 1.3rem; color: #666;">Are you ready?</p>
+            <button class="btn btn-primary" id="ready-btn" onclick="goToScreen(8)" style="display: none; margin-top: 30px;">I am ready! 🤩</button>
+        </div>
+    </div>
+
+    <!-- Screen 8: Valentine Question -->
+    <div class="screen" id="screen-8">
+        <div class="content">
+            <h2 class="final-question">Sofiia, will you be my Valentine? 💌</h2>
+            <div class="valentine-gif">
+                <div class="tenor-gif-embed" data-postid="10804346947536782797" data-share-method="host" data-aspect-ratio="0.639535" data-width="100%"><a href="https://tenor.com/view/happy-cat-gif-10804346947536782797">Happy Cat GIF</a>from <a href="https://tenor.com/search/happy+cat-gifs">Happy Cat GIFs</a></div>
+            </div>
+            <div class="final-buttons">
+                <button class="btn btn-yes" id="yes-btn" onclick="handleYes()">YES 💖</button>
+                <button class="btn btn-no" id="no-btn" onmouseenter="handleNoHover()" onmouseleave="handleNoLeave()" onclick="handleNoClick()">no 🙄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 9: Final Ending -->
+    <div class="screen" id="screen-9">
+        <div class="content">
+            <h1 class="big-title">💖 YAAAY LETS GOOOO! 💖</h1>
+            <p class="ending-subtitle">You are officially my Valentine!!!</p>
+            <div class="final-message-box">
+                <p class="final-romantic-text">
+                    You are my favorite person,<br>
+                    my favorite smile,<br>
+                    my favorite everything!<br>
+                    I love you my heart!💘
+                </p>
+            </div>
+            <button class="btn btn-primary" onclick="restartTest()" style="display: none;">👉 Restart the test 😌</button>
+        </div>
+
+        <!-- Floating cat GIFs -->
+        <div class="floating-gif gif-1">
+            <div class="tenor-gif-embed" data-postid="6540808372197226742" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/yippee-cat-kitty-gif-6540808372197226742">Yippee Cat Kitty GIF</a>from <a href="https://tenor.com/search/yippee+cat-gifs">Yippee Cat GIFs</a></div>
+        </div>
+
+        <div class="floating-gif gif-2">
+            <div class="tenor-gif-embed" data-postid="17643687004817745866" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/catto-gif-17643687004817745866">Catto GIF</a>from <a href="https://tenor.com/search/catto-gifs">Catto GIFs</a></div>
+        </div>
+
+        <div class="floating-gif gif-3">
+            <div class="tenor-gif-embed" data-postid="14762310134329663850" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/dnce-gif-14762310134329663850">Dnce GIF</a>from <a href="https://tenor.com/search/dnce-gifs">Dnce GIFs</a></div>
+        </div>
+
+        <div class="floating-gif gif-4">
+            <div class="tenor-gif-embed" data-postid="12629347036627000898" data-share-method="host" data-aspect-ratio="0.596386" data-width="100%"><a href="https://tenor.com/view/dancing-cat-dance-cat-cat-meme-chinese-cat-gif-12629347036627000898">Dancing Cat Dance GIF</a>from <a href="https://tenor.com/search/dancing+cat-gifs">Dancing Cat GIFs</a></div>
+        </div>
+
+        <div class="floating-gif gif-5">
+            <div class="tenor-gif-embed" data-postid="13410715" data-share-method="host" data-aspect-ratio="1.415" data-width="100%"><a href="https://tenor.com/view/funny-cat-happy-angry-crazy-gif-13410715">Funny Cat GIF</a>from <a href="https://tenor.com/search/funny-gifs">Funny GIFs</a></div>
+        </div>
+
+        <div class="floating-gif gif-6">
+            <div class="tenor-gif-embed" data-postid="24526146" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/party-cat-gif-24526146">Party Cat Sticker</a>from <a href="https://tenor.com/search/party+cat-stickers">Party Cat Stickers</a></div>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup">
+            <p id="popup-message"></p>
+            <button class="btn btn-primary" id="popup-btn">👉 Next question</button>
+        </div>
+    </div>
+
+    <!-- Human Proof Popup -->
+    <div class="popup-overlay" id="human-proof-popup">
+        <div class="popup">
+            <p>Please confirm:<br>Sofiia is the most special person ever 💖</p>
+            <button class="btn btn-primary" onclick="confirmHuman('yes')">Yes, obviously 😌</button>
+            <button class="btn btn-primary" onclick="confirmHuman('yes')">Of course 💘</button>
+        </div>
+    </div>
+
+    <!-- Thinking Emoji Overlay -->
+    <div class="emoji-overlay" id="emoji-overlay">
+        <div class="thinking-emoji">🤨</div>
+    </div>
+
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
