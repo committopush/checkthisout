@@ -13,7 +13,12 @@ body {
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    overflow-y: auto;
     padding: 20px;
+}
+
+body:has(#screen-9.active) {
+    overflow: visible;
 }
 
 /* Screen Container */
@@ -851,17 +856,85 @@ body {
         width: 60px;
     }
 
-    .gif-1, .gif-2, .gif-3, .gif-4, .gif-5, .gif-6 {
+    .gif-1 {
+        top: 5%;
+        left: 2%;
+        width: 60px;
+    }
+
+    .gif-2 {
+        top: 8%;
+        right: 2%;
+        width: 60px;
+    }
+
+    .gif-3 {
+        top: 35%;
+        left: 1%;
+        width: 60px;
+    }
+
+    .gif-4 {
+        top: 40%;
+        right: 1%;
+        width: 60px;
+    }
+
+    .gif-5 {
+        bottom: 20%;
+        left: 2%;
+        width: 60px;
+    }
+
+    .gif-6 {
+        bottom: 15%;
+        right: 2%;
         width: 60px;
     }
 }
 
 @media (max-width: 480px) {
+    #screen-9 {
+        overflow: visible;
+    }
+
     .floating-gif {
         width: 50px;
     }
 
-    .gif-1, .gif-2, .gif-3, .gif-4, .gif-5, .gif-6 {
+    .gif-1 {
+        top: 10px;
+        left: 5px;
+        width: 50px;
+    }
+
+    .gif-2 {
+        top: 10px;
+        right: 5px;
+        width: 50px;
+    }
+
+    .gif-3 {
+        top: 45%;
+        left: 5px;
+        width: 50px;
+    }
+
+    .gif-4 {
+        top: 45%;
+        right: 5px;
+        width: 50px;
+    }
+
+    .gif-5 {
+        bottom: 80px;
+        left: 5px;
+        width: 50px;
+    }
+
+    .gif-6 {
+        bottom: 80px;
+        right: 5px;
         width: 50px;
     }
 }
